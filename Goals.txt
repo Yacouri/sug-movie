@@ -1,0 +1,49 @@
+💼 Project: Sugmovie
+📝 Description: We're always want to watch a movie but we don't know which one, Sugmovie is here to suggest you the best movies of all the time
+📆 Start date: 11/03/2021 ~ 14:41
+📆 End date: __/__/__ ~ __:__
+
+
+# Numbers 💯
+  629 142 movies
+  2 428 431 episodes
+
+# Dependencies ⚙
+  🔧 router
+  🔧 react-router-dom
+  🔧 redux
+  🔧 react-redux
+  🔧 axios
+  🔧 feather-icons
+
+# Structure (Components) 📑:
+  🚀 Navigation
+  🚀 HeaderTitle
+  🚀 SearchMovieForm
+  🚀 Movies
+      -> MovieCard
+      -> MovieDetails
+  🚀 TopMovies
+      -> Movies/MovieCard
+  🚀 Suggestion
+      -> Movies/MovieCard
+  🚀 Contact
+      -> ContactForm
+      -> ContactInformations
+  🚀 Footer
+ 
+# Global features 💡:
+  💡 random movie suggestion
+  💡 search by categorie
+  💡 top 10 movies
+  💡 top movies of the week
+
+
+
+# Tasks 📜
+  ✅ Add footer.
+  ✅ Add Contact page.
+  ✅ Setup redux.
+  ✅ Show trending movies on load.
+  ❌ Show clicked movie's details
+  ❌ Add Responsive
