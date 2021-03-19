@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react'
 import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
-import { fetchMovieById, getMoviesGenre } from '../../actions/movie'
-import { connect } from 'react-redux'
+import { fetchMovieById, fetchMoviesVideo, getMoviesGenre, getMovieLanguage } from '../../actions/movie'
+import { useDispatch, useSelector } from 'react-redux'
 
-const MovieDetails = ({movie, fetchMovieById}) => {
+const MovieDetails = () => {
     const {id, genre_id} = useParams()
-    //const [movie, setMovie] = useState({})
+    //const [movieData, setMovie] = useState({})
+    const dispatch = useDispatch()
+    const movie = useSelector(state => state.movie)
+    //const lang = useSelector(state => state.movie.movie_details.spoken_languages[0].english_name)
+    const movies_url = useSelector(state => state.movie.movies_url)
     useEffect(() => {
-        fetchMovieById(id)
+        //fetchMovieById(id)
+        dispatch(fetchMovieById(id))
+        dispatch(fetchMoviesVideo(id))
     }, []);
     return (
         <div>
@@ -30,6 +36,12 @@ const MovieDetails = ({movie, fetchMovieById}) => {
                             </p>
                         </div>
                         <div className="selected-movie-overview">
+                                <p className="movie-detail">Genre</p>
+                                <p className="movie-detail-value">
+                                {getMoviesGenre(parseInt(genre_id))}
+                                </p>
+                            </div>
+                        <div className="selected-movie-overview">
                             <p className="movie-detail">Released on</p>
                             <p className="movie-detail-value">
                             {movie.movie_details.release_date}
@@ -37,9 +49,9 @@ const MovieDetails = ({movie, fetchMovieById}) => {
                         </div>
                         <div className="movie-overview-flex">
                             <div className="selected-movie-overview">
-                                <p className="movie-detail">Category</p>
+                                <p className="movie-detail">Original language</p>
                                 <p className="movie-detail-value">
-                                {getMoviesGenre(parseInt(genre_id))}
+                                {}
                                 </p>
                             </div>
                             <div className="selected-movie-overview">
@@ -58,19 +70,15 @@ const MovieDetails = ({movie, fetchMovieById}) => {
                     <button className="watch-movie">Watch</button>
                     </div>
                 </div>
+                <iframe width="100%" height="315" 
+                    src={movies_url}
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                    allowFullScreen>
+                </iframe>
             </div>
         </div>
     )
 }
-const mapStateToProps = (state) =>{
-    return {
-        movie: state.movie
-    }
-}
-const mapDistapchToProps = (dispatch) =>{
-    return {
-        fetchMovieById: (id) => dispatch(fetchMovieById(id))
-    }
-}
 
-export default connect(mapStateToProps, mapDistapchToProps)(MovieDetails);
+export default MovieDetails;

@@ -1,5 +1,5 @@
 💼 Project: Sugmovie
-📝 Description: We're always want to watch a movie but we don't know which one, Sugmovie is here to suggest you the best movies of all the time
+📝 Description: We always want to watch a movie but we don't know which one, Sugmovie is here to suggest you the best movies of all the time
 📆 Start date: 11/03/2021 ~ 14:41
 📆 End date: __/__/__ ~ __:__
 
@@ -45,5 +45,9 @@
   ✅ Add Contact page.
   ✅ Setup redux.
   ✅ Show trending movies on load.
-  ❌ Show clicked movie's details
+  ✅ Show clicked movie's details
+  ❌ Handle unknown movies trailer
+  ❌ Show popoular movies
+  ❌ Suggest movies
+  ❌ Contact page functionality
   ❌ Add Responsive

@@ -1,6 +1,7 @@
 const initialState ={
     movies: [],
     movie_details: {},
+    movies_url: "",
     loading: false
 }
 
@@ -21,6 +22,12 @@ const movieReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 movie_details: action.payload,
+                loading: false
+            }
+        case 'GET_MOVIES_VIDEO':
+            return {
+                ...state,
+                movies_url: action.payload,
                 loading: false
             }
         default:

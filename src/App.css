@@ -105,22 +105,9 @@ form > div{
 .top-10{
   color: #ffffff;
 }
-.movies{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.movies > div{
-  flex: 0 18%;
-}
 .movie-img > a > img{
   max-width: 100%;
   border-radius: 5px;
-}
-.movie-title{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
 }
 .movie-title > h3{
   color: #ffffff;
@@ -144,6 +131,20 @@ form > div{
 }
 .bad{
   color: #FB3A3A;
+}
+.rec.rec-arrow {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-top: -230px;
+}
+.rec.rec-arrow:hover {
+  background-color: transparent;
+}
+.rec-carousel-item:focus{
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
 }
 
 /* Movie details */
