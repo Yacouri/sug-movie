@@ -3,6 +3,8 @@ import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
 import { fetchMovieById, fetchMoviesVideo, getMoviesGenre, getMovieLanguage } from '../../actions/movie'
 import { useDispatch, useSelector } from 'react-redux'
+//import PopularActors from '../../components/Actors/PopularActors'
+import MovieCard from './MovieCard'
 
 const MovieDetails = () => {
     const {id, genre_id} = useParams()
@@ -70,12 +72,28 @@ const MovieDetails = () => {
                     <button className="watch-movie">Watch</button>
                     </div>
                 </div>
-                <iframe width="100%" height="315" 
-                    src={movies_url}
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-                    allowFullScreen>
-                </iframe>
+                <div className="movie-credits">
+                    <h1>Actors 🎭</h1>
+                    
+                </div>
+                <div className="trailer-wrapper">
+                    <h1>Trailer 🎬</h1>
+                    {
+                        movie.movies_url.length > 0 ? 
+                            <iframe width="100%" height="315" 
+                                src={movies_url}
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                                allowFullScreen>
+                            </iframe>
+                            :
+                            <p className="trailer-error-text">Sorry, <span className="m-name">{movie.movie_details.title}'s</span> trailer not found. </p>
+                    }
+                </div>
+                    
+                <div className="current-genre-recommendation-wrapper">
+                    <h1>Recommendation for {getMoviesGenre(parseInt(genre_id))} movies 🍿</h1>
+                </div>
             </div>
         </div>
     )

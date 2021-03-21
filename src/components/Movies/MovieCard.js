@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {getMoviesGenre, getMovieSlug, getVoteColor} from '../../actions/movie'
 import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
-
+import ShowMoreMoviesImage from '../../images/show_more_movies.png'
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -16,7 +16,6 @@ const breakPoints = [
 const MovieCard = ({movies}) => {
     return (
         <div className="movie-card-wrapper">
-            <h2 className="top-10">Trending movies 👌🏼</h2>
             <div className="movies">
                 <Carousel breakPoints={breakPoints} pagination={false}>
                 {movies.movies.map((movie, index)=>
@@ -41,6 +40,13 @@ const MovieCard = ({movies}) => {
                         </div>
                     </Item>
                 )}
+                <Item>
+                    <Link to='/more_movies'>
+                        <div className="show-more-movies">
+                            <img src={ShowMoreMoviesImage} alt="more movies"/>
+                        </div>
+                    </Link>
+                </Item>
                 </Carousel>
             </div>
         </div>

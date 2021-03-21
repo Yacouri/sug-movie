@@ -99,10 +99,8 @@ form > div{
 }
 
 /* Top movies */
-.movie-card-wrapper{
-  margin-top: 10%;
-}
 .top-10{
+  margin-top: 10%;
   color: #ffffff;
 }
 .movie-img > a > img{
@@ -199,6 +197,21 @@ form > div{
   border-radius:10px;
   width: 50%;
   padding: 20px;
+  cursor: pointer;
+}
+.trailer-wrapper{
+  color: #fff;
+  margin-top: 5%;
+}
+.m-name{
+  color: #F03A17;
+}
+.current-genre-recommendation-wrapper{
+  margin-top: 5%;
+  color: #fff;
+}
+.movie-credits > h1{
+  color: #fff;
 }
 
 /* Contact us */
@@ -300,3 +313,21 @@ form > div{
   color: #ffffff;
   font-weight: 300;
 }
+
+
+/* Popular actors*/
+.actor-img > a > img{
+  max-width: 100%;
+  border-radius: 5px;
+}
+.actor-name > h3{
+  color: #ffffff;
+  text-align: center;
+  font-weight: 500;
+}
+.popular-actors-wrapper div div > .rec.rec-arrow {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+

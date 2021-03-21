@@ -42,12 +42,30 @@
 
 # Tasks 📜
   ✅ Add footer.
-  ✅ Add Contact page.
-  ✅ Setup redux.
-  ✅ Show trending movies on load.
-  ✅ Show clicked movie's details
-  ❌ Handle unknown movies trailer
-  ❌ Show popoular movies
-  ❌ Suggest movies
-  ❌ Contact page functionality
-  ❌ Add Responsive
+  
+  🎯 Contact:
+      ↳ ✅ Add Contact page.
+      ↳ ❌ Contact page functionality
+
+  🎯 Redux:
+      ↳ ✅ Setup redux
+
+  🎯 Home page:
+      ↳ ✅ trending movies
+      ↳ ✅ trending actors
+      ↳ ❌ popoular movies
+      ↳ ❌ recommendation movies
+      
+  🎯 Movie details page:
+      https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+      ↳ ✅ clicked movie details
+      ↳ ✅ Handle unknown movies trailer
+      ↳ ❌ movie credits
+      ↳ ❌ Recommendation for current genre
+
+  🎯 Search:
+      ↳ ❌ search by movie's name
+      ↳ ❌ search by caster's name (if it's allowed)
+
+  🎯 Responsive:
+      ↳ ❌

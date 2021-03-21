@@ -1,5 +1,6 @@
 const initialState ={
     movies: [],
+    actors : [],
     movie_details: {},
     movies_url: "",
     loading: false
@@ -12,7 +13,7 @@ const movieReducer = (state = initialState, action) =>{
                 ...state,
                 loading: true,
             };
-        case 'SHOW_TOP_MOVIES':
+        case 'GET_TOP_MOVIES':
             return {
                 ...state,
                 movies: action.payload,
@@ -28,6 +29,12 @@ const movieReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 movies_url: action.payload,
+                loading: false
+            }
+        case 'GET_POPULAR_ACTORS':
+            return {
+                ...state,
+                actors: action.payload,
                 loading: false
             }
         default:
