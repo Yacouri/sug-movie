@@ -6,6 +6,7 @@ import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
 import maleImg from '../../images/male_img_not_found.png'
 import femaleImg from '../../images/female_img_not_found.png'
+import ShowMoreActorsImage from '../../images/show_more_actors.png'
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -47,6 +48,13 @@ const PopularActors = () => {
             <div className="popular-actors-wrapper">
                 <Carousel breakPoints={breakPoints} pagination={false}>
                     {renderActors}
+                    <Item>
+                        <div className="show-more-movies">
+                            <Link to='/more_movies'>
+                                <img src={ShowMoreActorsImage} alt="more movies"/>
+                            </Link>
+                        </div>
+                    </Item>
                 </Carousel>
             </div>
         </div>

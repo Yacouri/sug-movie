@@ -1,14 +1,15 @@
 const initialState ={
     movies: [],
-    actors : [],
     movie_details: {},
     movies_url: "",
+    popular_movies: [],
+    actors : [],
     loading: false
 }
 
 const movieReducer = (state = initialState, action) =>{
     switch(action.type){
-        case 'FETCH_TOP_MOVIES':
+        case 'FETCH_GET_REQUEST':
             return {
                 ...state,
                 loading: true,
@@ -35,6 +36,12 @@ const movieReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 actors: action.payload,
+                loading: false
+            }
+        case 'GET_POPULAR_MOVIES':
+            return {
+                ...state,
+                popular_movies: action.payload,
                 loading: false
             }
         default:

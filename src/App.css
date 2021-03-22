@@ -134,7 +134,7 @@ form > div{
   background-color: transparent;
   border: 1px solid #fff;
   color: #fff;
-  margin-top: -230px;
+  margin-top: -8%;
 }
 .rec.rec-arrow:hover {
   background-color: transparent;
@@ -143,6 +143,10 @@ form > div{
   background-color: transparent;
   border: 1px solid #fff;
   color: #fff;
+}
+.show-more-movies > a > img{
+  max-width: 100%;
+  border-radius: 5px;
 }
 
 /* Movie details */
@@ -330,4 +334,7 @@ form > div{
   border: 1px solid #fff;
   color: #fff;
 }
-
+.show-more-actors > a > img{
+  max-width: 100%;
+  border-radius: 5px;
+}

@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
-import { fetchMovieById, fetchMoviesVideo, getMoviesGenre, getMovieLanguage } from '../../actions/movie'
+import { fetchMovieById, fetchMoviesVideo, getMoviesGenre } from '../../actions/movie'
 import { useDispatch, useSelector } from 'react-redux'
-//import PopularActors from '../../components/Actors/PopularActors'
-import MovieCard from './MovieCard'
 
 const MovieDetails = () => {
     const {id, genre_id} = useParams()

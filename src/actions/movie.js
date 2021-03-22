@@ -1,10 +1,12 @@
 import axios from 'axios'
 import movie_genres from '../api/movie_genres.json'
 
+const key = process.env.REACT_APP_API_KEY
+
 export const fetchMovies = () =>{
     return (dispatch)=>{
-        dispatch(fetchTopMovies())
-        axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`)
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
         .then(res => {
             const movies = res.data.results
             dispatch(getTopMovies(movies))
@@ -15,8 +17,8 @@ export const fetchMovies = () =>{
 }
 export const fetchMovieById = (id) =>{
     return (dispatch)=>{
-        dispatch(fetchTopMovies())
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
         .then(res =>{
             const movie = res.data
             return dispatch(getMovieById(movie))
@@ -29,8 +31,8 @@ export const fetchMovieById = (id) =>{
 }
 export const fetchMoviesVideo = (id) =>{
     return (dispatch) =>{
-        dispatch(fetchTopMovies())
-        axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-US`)
         .then(res =>{
             const movies_url = `https://www.youtube.com/embed/${res.data.results[0].key}`
             return dispatch(getMoviesVideo(movies_url))
@@ -42,7 +44,7 @@ export const fetchMoviesVideo = (id) =>{
 }
 export const fetchPopularActors = () =>{
     return (dispatch) =>{
-        axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
+        axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${key}&language=en-US&page=1`)
         .then(res =>{
             const actors = res.data.results
             return dispatch(getPopularActors(actors))
@@ -52,11 +54,24 @@ export const fetchPopularActors = () =>{
         })
     }
 }
+export const fetchPopularMovies = () =>{
+    return (dispatch) =>{
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
+        .then(res =>{
+            const popular_movies = res.data.results
+            return getPopularMovies(popular_movies)
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
 
 
-export const fetchTopMovies = () =>{
+export const fetchGetRequest = () =>{
     return {
-        type: 'FETCH_TOP_MOVIES'
+        type: 'FETCH_GET_REQUEST'
     }
 }
 export const getTopMovies = (movies) =>{
@@ -77,10 +92,16 @@ export const getMoviesVideo = (video) =>{
         payload: video
     }
 }
-export const getPopularActors = (actors) =>{
+export const getPopularActors = (popular_actors) =>{
     return{
         type: 'GET_POPULAR_ACTORS',
-        payload: actors
+        payload: popular_actors
+    }
+}
+export const getPopularMovies = (popular_movies) =>{
+    return{
+        type: 'GET_POPULAR_MOVIES',
+        payload: popular_movies
     }
 }
 

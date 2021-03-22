@@ -53,6 +53,7 @@
   🎯 Home page:
       ↳ ✅ trending movies
       ↳ ✅ trending actors
+      ↳ ✅ Popular actors
       ↳ ❌ popoular movies
       ↳ ❌ recommendation movies
       
@@ -62,6 +63,11 @@
       ↳ ✅ Handle unknown movies trailer
       ↳ ❌ movie credits
       ↳ ❌ Recommendation for current genre
+      ↳ ❌ more movies page
+
+  🎯 Actors:
+      ↳ ✅ Popular actors
+      ↳ ❌ more actors
 
   🎯 Search:
       ↳ ❌ search by movie's name

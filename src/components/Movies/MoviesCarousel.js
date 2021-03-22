@@ -1,5 +1,4 @@
 import React from 'react'
-//import movieImg from '../../images/fight_club.png'
 import {Link} from 'react-router-dom'
 import {getMoviesGenre, getMovieSlug, getVoteColor} from '../../actions/movie'
 import Item from '../styledComponents/item'
@@ -13,12 +12,12 @@ const breakPoints = [
     { width: 1200, itemsToShow: 5 }
   ];
 
-const MovieCard = ({movies}) => {
+const MoviesCarousel = ({movies_data})=> {
     return (
-        <div className="movie-card-wrapper">
+        <div>
             <div className="movies">
                 <Carousel breakPoints={breakPoints} pagination={false}>
-                {movies.movies.map((movie, index)=>
+                {movies_data.map((movie, index)=>
                     <Item key={index}>
                         <div className="movie-card">
                             <div className="movie-img">
@@ -41,11 +40,11 @@ const MovieCard = ({movies}) => {
                     </Item>
                 )}
                 <Item>
-                    <Link to='/more_movies'>
-                        <div className="show-more-movies">
+                    <div className="show-more-movies">
+                        <Link to='/more_movies'>
                             <img src={ShowMoreMoviesImage} alt="more movies"/>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 </Item>
                 </Carousel>
             </div>
@@ -53,4 +52,4 @@ const MovieCard = ({movies}) => {
     )
 }
 
-export default MovieCard
+export default MoviesCarousel
