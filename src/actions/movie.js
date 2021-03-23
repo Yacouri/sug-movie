@@ -1,8 +1,11 @@
 import axios from 'axios'
 import movie_genres from '../api/movie_genres.json'
 
+// API KEY
 const key = process.env.REACT_APP_API_KEY
 
+
+// FETCHING FUNCTIONS
 export const fetchMovies = () =>{
     return (dispatch)=>{
         dispatch(fetchGetRequest())
@@ -67,8 +70,21 @@ export const fetchPopularMovies = () =>{
         })
     }
 }
+export const fetchMoviesSuggestion = ()=>{
+    return (dispatch) =>{
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${getRandomGenre()}&page=1`
+        dispatch(fetchGetRequest())
+        axios.get(url)
+        .then(res => {
+            return dispatch(getSuggestionMovie(res.data.results))
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
 
-
+// FETCHING ACTIONS
 export const fetchGetRequest = () =>{
     return {
         type: 'FETCH_GET_REQUEST'
@@ -104,8 +120,14 @@ export const getPopularMovies = (popular_movies) =>{
         payload: popular_movies
     }
 }
+export const getSuggestionMovie = (suggestions) =>{
+    return{
+        type: 'GET_MOVIE_SUGGESTION',
+        payload: suggestions
+    }
+}
 
-
+// COMPONENT'S FUNCTION
 export const getMoviesGenre = (genre_id) =>{
     const genres = movie_genres.filter(genre => genre.id === genre_id);
     return genres[0] ? genres[0].name : 'unknown'
@@ -124,4 +146,8 @@ export const getMovieSlug = (slug) =>{
 export const getVoteColor = (vote_average) =>{
     const result = vote_average > 6.9 ? 'good' : 'decent'
     return result
+}
+export const getRandomGenre = () =>{
+    const random_genre = movie_genres[Math.floor(Math.random() * movie_genres.length)]
+    return random_genre.id
 }

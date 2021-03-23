@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchPopularActors } from '../../actions/movie'
 import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
 import maleImg from '../../images/male_img_not_found.png'
@@ -15,19 +13,15 @@ const breakPoints = [
     { width: 1200, itemsToShow: 5 }
   ];
 
-const PopularActors = () => {
-    const dispatch = useDispatch()
-    const actorsData = useSelector(state=> state.movie.actors)
-    useEffect(() => {
-        dispatch(fetchPopularActors())
-    },[])
+const PopularActors = ({ actors_data }) => {
     const checkActorImage = (imgPath, gender) => {
         const url = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'
         const actor_gender_img = gender === 1 ? femaleImg : maleImg
         const result = imgPath === null ? actor_gender_img : url+imgPath
         return result
     }
-    const renderActors = actorsData.map((actor) => {
+
+    const renderActors = actors_data.actors.map((actor) => {
         return (
             <Item key={actor.id}>
                 <div className="popular-actor" key={actor.id}>

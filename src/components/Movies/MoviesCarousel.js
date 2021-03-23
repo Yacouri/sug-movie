@@ -4,6 +4,7 @@ import {getMoviesGenre, getMovieSlug, getVoteColor} from '../../actions/movie'
 import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
 import ShowMoreMoviesImage from '../../images/show_more_movies.png'
+import MovieCard from './MovieCard';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -12,31 +13,25 @@ const breakPoints = [
     { width: 1200, itemsToShow: 5 }
   ];
 
-const MoviesCarousel = ({movies_data})=> {
+const MoviesCarousel = ({ movies_data, section })=> {
     return (
         <div>
             <div className="movies">
                 <Carousel breakPoints={breakPoints} pagination={false}>
                 {movies_data.map((movie, index)=>
                     <Item key={index}>
-                        <div className="movie-card">
-                            <div className="movie-img">
-                                <Link to={`/movie/${movie.genre_ids[0]}/${movie.id}/${getMovieSlug(movie.title)}`}>
-                                    <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt="movie"/>
-                                </Link>
-                            </div>
-                            <div className="movie-caption">
-                                <div className="movie-title">
-                                    <h3>{movie.title}</h3>
-                                    <span>Trending</span>
-                                </div>
-                                <p className="movie-date">{movie.release_date}</p>
-                                <p className="movie-category">{getMoviesGenre(movie.genre_ids[0])}</p>
-                                <p className="movie-rating">
-                                    <span className={`rate ${getVoteColor(movie.vote_average)}`}>{movie.vote_average}</span> / 10
-                                </p>
-                            </div>
-                        </div>
+                        <MovieCard 
+                            genre_id={movie.genre_ids[0]}
+                            genre={getMoviesGenre(movie.genre_ids[0])}
+                            id={movie.id}
+                            slug={getMovieSlug(movie.title)}
+                            poster={movie.poster_path}
+                            title={movie.title}
+                            release_date={movie.release_date}
+                            vote_color={getVoteColor(movie.vote_average)}
+                            vote_average={movie.vote_average}
+                            section={section}
+                        />
                     </Item>
                 )}
                 <Item>

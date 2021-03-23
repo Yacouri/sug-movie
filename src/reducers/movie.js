@@ -3,6 +3,7 @@ const initialState ={
     movie_details: {},
     movies_url: "",
     popular_movies: [],
+    suggestions: [],
     actors : [],
     loading: false
 }
@@ -42,6 +43,12 @@ const movieReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 popular_movies: action.payload,
+                loading: false
+            }
+        case 'GET_MOVIE_SUGGESTION':
+            return{
+                ...state,
+                suggestions : action.payload,
                 loading: false
             }
         default:
