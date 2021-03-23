@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Sugmovie ",
+  "name": "Sugmovie is movie suggestor that help people to find quality movies to watch.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "sugmovie_ico.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "sugmovie_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "sugmovie_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

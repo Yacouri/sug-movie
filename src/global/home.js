@@ -25,6 +25,7 @@ const Home = () => {
             <h2 className="top-10">Popular actors 🎭</h2>
             <PopularActors />
             <h2 className="top-10">Popular movies 🎬</h2>
+            <PopularMovies movies_data={popularMoviesData}/>
         </div>
     )
 }

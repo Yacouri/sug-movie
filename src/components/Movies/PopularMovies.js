@@ -5,7 +5,7 @@ import MoviesCarousel from './MoviesCarousel'
 const PopularMovies = ({movies_data})=> {
     return (
         <div>
-            {console.log(movies_data)}
+            <MoviesCarousel movies_data={movies_data.popular_movies} />
         </div>
     )
 }

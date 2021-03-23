@@ -76,7 +76,7 @@ form > div{
 .search{
   border:none;
   width: 95%;
-  height: 50px;
+  padding: 15px;
   border-radius: 6px;
   background-color: #28292A;
   color: #fff;

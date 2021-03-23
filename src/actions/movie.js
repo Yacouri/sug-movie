@@ -60,7 +60,7 @@ export const fetchPopularMovies = () =>{
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
         .then(res =>{
             const popular_movies = res.data.results
-            return getPopularMovies(popular_movies)
+            return dispatch(getPopularMovies(popular_movies))
         })
         .catch(error =>{
             console.warn(error)
