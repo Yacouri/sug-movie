@@ -354,9 +354,59 @@ form > div{
 /* Movie suggestion */
 .movie-suggestions{
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .movie-suggestions > div{
-  margin:10px;
   flex: 0 18%;
+}
+.pagination-wrapper{
+  margin-top:5%;
+  display: flex;
+  justify-content: center;
+}
+.li-pagination{
+  display:  inline-block;
+  margin: 20px;
+}
+.active-a{
+  background-color: #F03A17;
+  color: #F03A17;
+}
+.a-pagination{
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.suggestion-wrapper{
+  margin: 10% 0 3% 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.suggestion-wrapper > h2{
+  color: #ffffff;
+}
+.suggestion-wrapper > button > svg{
+  margin-left: 20px;
+}
+.suggestion-wrapper > button{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  background-color: #F03A17;
+  color: #ffffff;
+  font-size:15px;
+  font-weight:100;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.suggestion-wrapper > button:hover{
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #fff;
 }

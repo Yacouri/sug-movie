@@ -72,17 +72,32 @@ export const fetchPopularMovies = () =>{
 }
 export const fetchMoviesSuggestion = ()=>{
     return (dispatch) =>{
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${getRandomGenre()}&page=1`
+        const genre = getRandomGenre()
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${genre}&page=1`
         dispatch(fetchGetRequest())
         axios.get(url)
         .then(res => {
-            return dispatch(getSuggestionMovie(res.data.results))
+            return dispatch(getSuggestionMovie(res.data.results,  res.data.total_results, genre))
         })
         .catch(error =>{
             console.warn(error)
         })
     }
 }
+export const fetchClickedPageResults =(pageNumber, currentGenre)=>{
+    return (dispatch) =>{
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${currentGenre}&page=${pageNumber}`
+        dispatch(fetchGetRequest())
+        axios.get(url)
+        .then(res => {
+            return dispatch(getClickedPageResults(res.data.results))
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
+
 
 // FETCHING ACTIONS
 export const fetchGetRequest = () =>{
@@ -120,10 +135,18 @@ export const getPopularMovies = (popular_movies) =>{
         payload: popular_movies
     }
 }
-export const getSuggestionMovie = (suggestions) =>{
+export const getSuggestionMovie = (suggestions, total_results, suggested_genres) =>{
     return{
         type: 'GET_MOVIE_SUGGESTION',
-        payload: suggestions
+        payload: suggestions,
+        total_results: total_results,
+        suggested_genres: suggested_genres
+    }
+}
+export const getClickedPageResults = (pageResults) =>{
+    return {
+        type: 'GET_CLICKED_PAGE_RESULTS',
+        payload: pageResults
     }
 }
 

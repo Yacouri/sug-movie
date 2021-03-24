@@ -1,10 +1,12 @@
 const initialState ={
     movies: [],
     movie_details: {},
-    movies_url: "",
+    movies_url: null,
     popular_movies: [],
     suggestions: [],
+    suggested_genres: null,
     actors : [],
+    total_results: 1,
     loading: false
 }
 
@@ -48,7 +50,15 @@ const movieReducer = (state = initialState, action) =>{
         case 'GET_MOVIE_SUGGESTION':
             return{
                 ...state,
-                suggestions : action.payload,
+                suggestions: action.payload,
+                total_results: action.total_results,
+                suggested_genres: action.suggested_genres, 
+                loading: false
+            }
+        case 'GET_CLICKED_PAGE_RESULTS':
+            return{
+                ...state,
+                suggestions: action.payload,
                 loading: false
             }
         default:

@@ -11,6 +11,17 @@ const MovieDetails = () => {
     const movie = useSelector(state => state.movie)
     //const lang = useSelector(state => state.movie.movie_details.spoken_languages[0].english_name)
     const movies_url = useSelector(state => state.movie.movies_url)
+    const renderTrailer = (
+        movie.movies_url !== null ? 
+        <iframe width="100%" height="315" 
+            src={movies_url}
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+            allowFullScreen>
+        </iframe>
+        :
+        <p className="trailer-error-text">Sorry, <span className="m-name">{movie.movie_details.title}'s</span> trailer not found. </p>
+    )
     useEffect(() => {
         //fetchMovieById(id)
         dispatch(fetchMovieById(id))
@@ -77,15 +88,7 @@ const MovieDetails = () => {
                 <div className="trailer-wrapper">
                     <h1>Trailer 🎬</h1>
                     {
-                        movie.movies_url.length > 0 ? 
-                            <iframe width="100%" height="315" 
-                                src={movies_url}
-                                frameBorder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-                                allowFullScreen>
-                            </iframe>
-                            :
-                            <p className="trailer-error-text">Sorry, <span className="m-name">{movie.movie_details.title}'s</span> trailer not found. </p>
+                        renderTrailer
                     }
                 </div>
                     
