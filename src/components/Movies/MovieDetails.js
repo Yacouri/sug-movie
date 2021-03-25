@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
-import { fetchMovieById, fetchMoviesVideo, getMoviesGenre } from '../../actions/movie'
+import { fetchMovieById, fetchMoviesVideo, getMoviesGenre, checkMovieImage } from '../../actions/movie'
 import { useDispatch, useSelector } from 'react-redux'
 
 const MovieDetails = () => {
@@ -33,7 +33,7 @@ const MovieDetails = () => {
             <div className="movie-details-wrapper">
                 <div className="movie-details">
                     <div className="selected-movie-img">
-                        <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.movie_details.poster_path}`} alt="movie img"/>
+                        <img src={checkMovieImage(movie.movie_details.poster_path)} alt="movie img"/>
                     </div>
                     <div className="movie-caption-wrapper">
                         <div className="title">

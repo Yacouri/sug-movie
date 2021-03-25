@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { checkMovieImage } from '../../actions/movie'
 
 const MovieCard =({ id, section, genre_id, genre, slug, poster, title, release_date, vote_color, vote_average }) => {
     return (
@@ -7,7 +8,7 @@ const MovieCard =({ id, section, genre_id, genre, slug, poster, title, release_d
             <div className="movie-card">
                 <div className="movie-img">
                     <Link to={`/movie/${genre_id}/${id}/${encodeURIComponent(slug)}`}>
-                        <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster}`} alt="movie"/>
+                        <img src={checkMovieImage(poster)} alt="movie"/>
                     </Link>
                 </div>
                 <div className="movie-caption">

@@ -6,6 +6,7 @@ import SearchMovie from '../components/searchMovie'
 import PopularActors from '../components/Actors/PopularActors'
 import PopularMovies from '../components/Movies/PopularMovies'
 import TrendingMovies from '../components/Movies/TrendingMovies'
+import Footer from './footer'
 
 const Home = () => {
     const moviesData = useSelector(state=> state.movie)
@@ -27,6 +28,7 @@ const Home = () => {
             <PopularActors actors_data={actorsData}/>
             <h2 className="top-10">Popular movies 🎬</h2>
             <PopularMovies movies_data={popularMoviesData}/>
+            <Footer />
         </div>
     )
 }

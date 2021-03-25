@@ -1,5 +1,6 @@
 import axios from 'axios'
 import movie_genres from '../api/movie_genres.json'
+import moviesImageNotFound from '../images/movies_image_not_found.png'
 
 // API KEY
 const key = process.env.REACT_APP_API_KEY
@@ -155,17 +156,14 @@ export const getMoviesGenre = (genre_id) =>{
     const genres = movie_genres.filter(genre => genre.id === genre_id);
     return genres[0] ? genres[0].name : 'unknown'
 }
-
 export const getMovieLanguage = (lang) =>{
     const result = lang ? lang : 'unknown'
     return console.log(result)
 }
-
 export const getMovieSlug = (slug) =>{
     const result = slug.split(' ').join('-');
     return result
 }
-
 export const getVoteColor = (vote_average) =>{
     const result = vote_average > 6.9 ? 'good' : 'decent'
     return result
@@ -173,4 +171,10 @@ export const getVoteColor = (vote_average) =>{
 export const getRandomGenre = () =>{
     const random_genre = movie_genres[Math.floor(Math.random() * movie_genres.length)]
     return random_genre.id
+}
+export const checkMovieImage = (image) =>{
+    const imageUrl = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${image}`
+    const errorImage = moviesImageNotFound
+    const result = image === null ? errorImage : imageUrl
+    return result
 }

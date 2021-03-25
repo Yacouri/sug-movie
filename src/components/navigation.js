@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Contact from '../global/contact';
-import Footer from '../global/footer';
 import Home from '../global/home';
 import MovieDetails from './Movies/MovieDetails';
 import MovieSuggestion from '../global/movieSuggestion'
@@ -51,8 +50,6 @@ function Navbar() {
                     <Route path="/movie/:genre_id/:id/:slug" children={<MovieDetails />} />
                 </Switch>
             </div>
-        <Footer />
-
         </Router>
         
     )
