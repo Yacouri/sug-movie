@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
 import { checkActorImage } from '../../actions/movie'
-import FeatherIcon from 'feather-icons-react'
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },

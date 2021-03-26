@@ -5,6 +5,7 @@ import Home from '../global/home';
 import MovieDetails from './Movies/MovieDetails';
 import MovieSuggestion from '../global/movieSuggestion'
 import TopMovies from '../global/topMovies'
+import SearchMovieResults from './Movies/SearchMovieResults';
 
 function Navbar() {
     return (
@@ -48,6 +49,7 @@ function Navbar() {
                         <Contact />
                     </Route>
                     <Route path="/movie/:genre_id/:id/:slug" children={<MovieDetails />} />
+                    <Route path="/movie/search/:genre_id" children={<SearchMovieResults />} />
                 </Switch>
             </div>
         </Router>

@@ -90,12 +90,17 @@ form > div{
 }
 .search-btn{
   cursor: pointer;
+  position: relative;
   margin-left: 10px;
   width: 50px;
   background-color: #F03A17;
   border-radius: 6px;
   border: none;
   outline: none;
+}
+.search-icon{
+  position: absolute;
+  transform: translate(60%, 60%);
 }
 
 /* Top movies */

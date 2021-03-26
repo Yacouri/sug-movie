@@ -36,7 +36,7 @@ const MoviesCarousel = ({ movies_data, section })=> {
                 )}
                 <Item>
                     <div className="show-more-movies">
-                        <Link to='/more_movies'>
+                        <Link to='/movie-suggestion'>
                             <img src={ShowMoreMoviesImage} alt="more movies"/>
                         </Link>
                     </div>

@@ -132,6 +132,20 @@ export const fetchCurrentGenreRecommendation = (currentGenre) =>{
         })
     }
 }
+export const fetchSearchResults = (genre_id) =>{
+    return (dispatch) =>{
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${genre_id}&page=1`)
+        .then(res =>{
+            console.log(res.data.results)
+            return dispatch(getSearchResults(res.data.results,  res.data.total_results))
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
+
 
 // FETCHING ACTIONS
 export const fetchGetRequest = () =>{
@@ -193,6 +207,13 @@ export const getCurrentGenreRecommendation = (recommendation) =>{
     return {
         type: 'GET_CURRENT_GENRE_RECOMMENDATION',
         payload: recommendation
+    }
+}
+export const getSearchResults = (search_results, total_results) =>{
+    return{
+        type: 'GET_SEARCH_RESULTS',
+        payload: search_results,
+        total_results: total_results
     }
 }
 

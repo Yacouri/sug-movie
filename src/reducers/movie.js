@@ -6,6 +6,7 @@ const initialState ={
     suggestions: [],
     suggested_genres: null,
     actors : [],
+    search_results: [],
     total_results: 1,
     loading: false
 }
@@ -71,6 +72,13 @@ const movieReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 movies: action.payload,
+                loading: false
+            }
+        case 'GET_SEARCH_RESULTS':
+            return{
+                ...state,
+                search_results: action.payload,
+                total_results: action.total_results,
                 loading: false
             }
         default:
