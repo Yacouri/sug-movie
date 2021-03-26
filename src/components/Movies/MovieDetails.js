@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
-import { fetchMovieById, fetchMoviesVideo, getMoviesGenre, checkMovieImage } from '../../actions/movie'
+import { fetchMovieById, fetchMoviesVideo, fetchMovieCredits, getMoviesGenre, checkMovieImage } from '../../actions/movie'
 import { useDispatch, useSelector } from 'react-redux'
+import MovieCredits from './MovieCredits'
+import CurrentGenreRecommendation from './CurrentGenreRecommendation'
 
 const MovieDetails = () => {
     const {id, genre_id} = useParams()
-    //const [movieData, setMovie] = useState({})
     const dispatch = useDispatch()
-    const movie = useSelector(state => state.movie)
-    //const lang = useSelector(state => state.movie.movie_details.spoken_languages[0].english_name)
+    const { movie_details } = useSelector(state => state.movie)
+    const { actors } = useSelector(state => state.movie)
     const movies_url = useSelector(state => state.movie.movies_url)
     const renderTrailer = (
-        movie.movies_url !== null ? 
+        movie_details.movies_url !== null ? 
         <iframe width="100%" height="315" 
             src={movies_url}
             frameBorder="0" 
@@ -20,30 +21,31 @@ const MovieDetails = () => {
             allowFullScreen>
         </iframe>
         :
-        <p className="trailer-error-text">Sorry, <span className="m-name">{movie.movie_details.title}'s</span> trailer not found. </p>
+        <p className="trailer-error-text">Sorry, <span className="m-name">{movie_details.title}'s</span> trailer not found. </p>
     )
     useEffect(() => {
-        //fetchMovieById(id)
         dispatch(fetchMovieById(id))
         dispatch(fetchMoviesVideo(id))
+        dispatch(fetchMovieCredits(id))
     }, []);
+
     return (
         <div>
             <SearchMovie />
             <div className="movie-details-wrapper">
                 <div className="movie-details">
-                    <div className="selected-movie-img">
-                        <img src={checkMovieImage(movie.movie_details.poster_path)} alt="movie img"/>
+                <div className="selected-movie-img">
+                        <img src={checkMovieImage(movie_details.poster_path)} alt="movie img"/>
                     </div>
                     <div className="movie-caption-wrapper">
                         <div className="title">
-                            <h3>{movie.movie_details.title}</h3>
+                            <h3>{movie_details.title}</h3>
                             <span>{getMoviesGenre(parseInt(genre_id))}</span>
                         </div>
                         <div className="selected-movie-overview">
                             <p className="movie-detail">Overview</p>
                             <p className="movie-detail-value">
-                            {movie.movie_details.overview}
+                            {movie_details.overview}
                             </p>
                         </div>
                         <div className="selected-movie-overview">
@@ -55,7 +57,7 @@ const MovieDetails = () => {
                         <div className="selected-movie-overview">
                             <p className="movie-detail">Released on</p>
                             <p className="movie-detail-value">
-                            {movie.movie_details.release_date}
+                            {movie_details.release_date}
                             </p>
                         </div>
                         <div className="movie-overview-flex">
@@ -68,13 +70,13 @@ const MovieDetails = () => {
                             <div className="selected-movie-overview">
                                 <p className="movie-detail">Rating</p>
                                 <p className="movie-detail-value">
-                                <span className="good">{movie.movie_details.vote_average}</span> / 10
+                                <span className="good">{movie_details.vote_average}</span> / 10
                                 </p>
                             </div>
                             <div className="selected-movie-overview">
                                 <p className="movie-detail">Popularity</p>
                                 <p className="movie-detail-value">
-                                {movie.movie_details.popularity}
+                                {movie_details.popularity}
                                 </p>
                             </div>
                         </div>
@@ -83,7 +85,7 @@ const MovieDetails = () => {
                 </div>
                 <div className="movie-credits">
                     <h1>Actors 🎭</h1>
-                    
+                    <MovieCredits casters={actors} />
                 </div>
                 <div className="trailer-wrapper">
                     <h1>Trailer 🎬</h1>
@@ -94,6 +96,7 @@ const MovieDetails = () => {
                     
                 <div className="current-genre-recommendation-wrapper">
                     <h1>Recommendation for {getMoviesGenre(parseInt(genre_id))} movies 🍿</h1>
+                    <CurrentGenreRecommendation current_genre={ genre_id }/>
                 </div>
             </div>
         </div>

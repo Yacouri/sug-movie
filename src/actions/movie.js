@@ -1,6 +1,9 @@
 import axios from 'axios'
 import movie_genres from '../api/movie_genres.json'
 import moviesImageNotFound from '../images/movies_image_not_found.png'
+import maleImg from '../images/male_img_not_found.png'
+import femaleImg from '../images/female_img_not_found.png'
+
 
 // API KEY
 const key = process.env.REACT_APP_API_KEY
@@ -13,9 +16,12 @@ export const fetchMovies = () =>{
         axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
         .then(res => {
             const movies = res.data.results
-            dispatch(getTopMovies(movies))
+            return dispatch(getTopMovies(movies))
             //console.log(movies)
             //getMoviesGenre(28)
+        })
+        .catch(error =>{
+            console.warn(error)
         })
     }
 }
@@ -98,7 +104,34 @@ export const fetchClickedPageResults =(pageNumber, currentGenre)=>{
         })
     }
 }
-
+export const fetchMovieCredits = (id) =>{
+    return (dispatch) =>{
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}&language=en-US`)
+        .then(res =>{
+            const actors = res.data.cast
+            //console.log(actors)
+            return dispatch(getMovieCredits(actors))
+        })
+        .catch(error =>{
+            console.warn(console.log(error))
+        })
+    }
+}
+export const fetchCurrentGenreRecommendation = (currentGenre) =>{
+    return (dispatch) =>{
+        dispatch(fetchGetRequest())
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${currentGenre}&page=1`)
+        .then(res =>{
+            const recommendation = res.data.results
+            //console.log(recommendation)
+            return dispatch(getCurrentGenreRecommendation(recommendation))
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
 
 // FETCHING ACTIONS
 export const fetchGetRequest = () =>{
@@ -150,6 +183,18 @@ export const getClickedPageResults = (pageResults) =>{
         payload: pageResults
     }
 }
+export const getMovieCredits = (actors) =>{
+    return {
+        type: 'GET_MOVIE_CREDITS',
+        payload: actors
+    }
+}
+export const getCurrentGenreRecommendation = (recommendation) =>{
+    return {
+        type: 'GET_CURRENT_GENRE_RECOMMENDATION',
+        payload: recommendation
+    }
+}
 
 // COMPONENT'S FUNCTION
 export const getMoviesGenre = (genre_id) =>{
@@ -171,6 +216,12 @@ export const getVoteColor = (vote_average) =>{
 export const getRandomGenre = () =>{
     const random_genre = movie_genres[Math.floor(Math.random() * movie_genres.length)]
     return random_genre.id
+}
+export const checkActorImage = (imgPath, gender) => {
+    const url = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'
+    const actor_gender_img = gender === 1 ? femaleImg : maleImg
+    const result = imgPath === null ? actor_gender_img : url+imgPath
+    return result
 }
 export const checkMovieImage = (image) =>{
     const imageUrl = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${image}`

@@ -123,7 +123,7 @@ form > div{
   padding: 2px 10px;
   border-radius: 50px;
 }
-.Suggestion{
+.Suggestion, .Recommendation{
   color: #F03A17;
   border: 1px solid #F03A17;
   padding: 2px 10px;
@@ -409,4 +409,16 @@ form > div{
   background-color: transparent;
   color: #ffffff;
   border: 2px solid #fff;
+}
+
+/* Movie credits */
+.actor{
+  color: #fff;
+}
+.character-text{
+  color: #828283;
+}
+.character-name{
+  margin-top: -15px;
+  color: #fff;
 }

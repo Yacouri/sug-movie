@@ -61,6 +61,18 @@ const movieReducer = (state = initialState, action) =>{
                 suggestions: action.payload,
                 loading: false
             }
+        case 'GET_MOVIE_CREDITS':
+            return{
+                ...state,
+                actors: action.payload,
+                loading: false
+            }
+        case 'GET_CURRENT_GENRE_RECOMMENDATION':
+            return{
+                ...state,
+                movies: action.payload,
+                loading: false
+            }
         default:
             return state;
     }
