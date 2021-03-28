@@ -14,26 +14,28 @@ const breakPoints = [
   ];
 
 const MoviesCarousel = ({ movies_data, section })=> {
+    const renderMovies = movies_data.map((movie, index)=>{
+        return (
+            <Item key={index}>
+                <MovieCard 
+                    id={movie.id}
+                    genre={movie.genres}
+                    slug={movie.slug}
+                    poster={movie.large_cover_image}
+                    title={movie.title}
+                    release_date={movie.release_date}
+                    vote_color={getVoteColor(movie.rating)}
+                    vote_average={movie.rating}
+                    section={section}
+                />
+            </Item>
+        )
+    })
     return (
         <div>
             <div className="movies">
                 <Carousel breakPoints={breakPoints} pagination={false}>
-                {movies_data.map((movie, index)=>
-                    <Item key={index}>
-                        <MovieCard 
-                            genre_id={movie.genre_ids[0]}
-                            genre={getMoviesGenre(movie.genre_ids[0])}
-                            id={movie.id}
-                            slug={getMovieSlug(movie.title)}
-                            poster={movie.poster_path}
-                            title={movie.title}
-                            release_date={movie.release_date}
-                            vote_color={getVoteColor(movie.vote_average)}
-                            vote_average={movie.vote_average}
-                            section={section}
-                        />
-                    </Item>
-                )}
+                    {renderMovies}
                 <Item>
                     <div className="show-more-movies">
                         <Link to='/movie-suggestion'>

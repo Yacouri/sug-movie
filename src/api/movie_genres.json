@@ -12,6 +12,10 @@
         "name": "Animation"
     },
     {
+        "id": 65764,
+        "name": "Biography"
+    },
+    {
         "id": 35,
         "name": "Comedy"
     },
@@ -48,6 +52,10 @@
         "name": "Music"
     },
     {
+        "id": 234,
+        "name": "Musical"
+    },
+    {
         "id": 9648,
         "name": "Mystery"
     },
@@ -56,12 +64,12 @@
         "name": "Romance"
     },
     {
-        "id": 878,
-        "name": "Science Fiction"
+        "id": 4567,
+        "name": "Sci-Fi"
     },
     {
-        "id": 10770,
-        "name": "TV Movie"
+        "id": 9657,
+        "name": "Sport"
     },
     {
         "id": 53,

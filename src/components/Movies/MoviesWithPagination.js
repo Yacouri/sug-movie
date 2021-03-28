@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { fetchClickedPageResults, getMoviesGenre, getMovieSlug, getVoteColor } from '../../actions/movie'
 import { useDispatch } from 'react-redux'
 import MovieCard from './MovieCard';

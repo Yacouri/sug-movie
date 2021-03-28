@@ -10,14 +10,14 @@ const SearchMovieResults = ()=> {
     const [activePage, setActivePage] = useState(1);
     const dispatch = useDispatch();
     const { genre_id } = useParams()
-    const { search_results } = useSelector(state =>state.movie)
+    const { suggestions } = useSelector(state =>state.movie)
     const { total_results } = useSelector(state =>state.movie)
 
     useEffect(() =>{
         dispatch(fetchSearchResults(genre_id))
     }, [])
 
-    const renderMovies = search_results.map(movie =>{
+    const renderMovies = suggestions.map(movie =>{
         return (
             <div className="suggested-movie" key={movie.id}>
                 <MovieCard 
@@ -61,6 +61,7 @@ const SearchMovieResults = ()=> {
                     pageRangeDisplayed={5}
                     onChange={(page_number)=>{
                         setActivePage(page_number)
+                        console.log(page_number)
                         dispatch(fetchClickedPageResults(page_number, genre_id))
                     }}
                 />

@@ -13,12 +13,13 @@ const key = process.env.REACT_APP_API_KEY
 export const fetchMovies = () =>{
     return (dispatch)=>{
         dispatch(fetchGetRequest())
-        axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
+        const complete_url = `https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${getRandomGenre()}&quality=All&minimum_rating=8`
+        //axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
+        axios.get(complete_url)
         .then(res => {
-            const movies = res.data.results
+            const movies = res.data.data.movies
+            console.log(movies)
             return dispatch(getTopMovies(movies))
-            //console.log(movies)
-            //getMoviesGenre(28)
         })
         .catch(error =>{
             console.warn(error)
@@ -28,14 +29,15 @@ export const fetchMovies = () =>{
 export const fetchMovieById = (id) =>{
     return (dispatch)=>{
         dispatch(fetchGetRequest())
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
+        const complete_url = `https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
+        axios.get(complete_url)
         .then(res =>{
-            const movie = res.data
-            return dispatch(getMovieById(movie))
+            const movie = res.data.data.movie
             //console.log(movie)
+            return dispatch(getMovieById(movie))
         })
         .catch(error =>{
-            return error
+            return console.warn(error)
         })
     }
 }
@@ -236,7 +238,7 @@ export const getVoteColor = (vote_average) =>{
 }
 export const getRandomGenre = () =>{
     const random_genre = movie_genres[Math.floor(Math.random() * movie_genres.length)]
-    return random_genre.id
+    return random_genre.name
 }
 export const checkActorImage = (imgPath, gender) => {
     const url = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'
@@ -245,8 +247,7 @@ export const checkActorImage = (imgPath, gender) => {
     return result
 }
 export const checkMovieImage = (image) =>{
-    const imageUrl = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${image}`
     const errorImage = moviesImageNotFound
-    const result = image === null ? errorImage : imageUrl
+    const result = image === null ? errorImage : image
     return result
 }

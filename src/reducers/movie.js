@@ -1,12 +1,13 @@
 const initialState ={
     movies: [],
+    download_links : [],
+    cast: [],
     movie_details: {},
     movies_url: null,
     popular_movies: [],
     suggestions: [],
     suggested_genres: null,
     actors : [],
-    search_results: [],
     total_results: 1,
     loading: false
 }
@@ -77,7 +78,7 @@ const movieReducer = (state = initialState, action) =>{
         case 'GET_SEARCH_RESULTS':
             return{
                 ...state,
-                search_results: action.payload,
+                suggestions: action.payload,
                 total_results: action.total_results,
                 loading: false
             }

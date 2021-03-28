@@ -138,6 +138,10 @@ form > div{
   color: #828283;
   line-height: 7px;
 }
+.movie-category{
+  color: #828283;
+  font-size: 12px;
+}
 .good{
   color: #09FF19;
 }

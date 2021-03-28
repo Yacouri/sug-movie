@@ -19,7 +19,7 @@ const ActorsCarousel = ({ actors_data }) =>{
             <Item key={actor.id}>
                 <div className="popular-actor" key={actor.id}>
                     <div className="actor-img">
-                        <Link to='/home'>
+                        <Link to='!#'>
                             <img src={checkActorImage(actor.profile_path, actor.gender)} alt={actor.name}/>
                         </Link>
                     </div>
@@ -36,13 +36,6 @@ const ActorsCarousel = ({ actors_data }) =>{
             <div className="popular-actors-wrapper">
                 <Carousel breakPoints={breakPoints} pagination={false}>
                     {renderActors}
-                    <Item>
-                        <div className="show-more-movies">
-                            <Link to='/more_movies'>
-                                <img src={ShowMoreActorsImage} alt="more movies"/>
-                            </Link>
-                        </div>
-                    </Item>
                 </Carousel>
             </div>
         </div>

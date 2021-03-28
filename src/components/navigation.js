@@ -48,7 +48,7 @@ function Navbar() {
                     <Route path="/contact-us" exact>
                         <Contact />
                     </Route>
-                    <Route path="/movie/:genre_id/:id/:slug" children={<MovieDetails />} />
+                    <Route path="/movie/:id/:slug" children={<MovieDetails />} />
                     <Route path="/movie/search/:genre_id" children={<SearchMovieResults />} />
                 </Switch>
             </div>
