@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import '../../css/suggestions.css'
 import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchClickedPageResults, fetchSearchResults, getVoteColor} from '../../actions/movie';

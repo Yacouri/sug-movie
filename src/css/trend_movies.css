@@ -1,0 +1,66 @@
+/* Top movies */
+.top-10{
+  margin-top: 10%;
+  color: #ffffff;
+}
+.movie-img > a > img{
+  max-width: 100%;
+  border-radius: 5px;
+}
+.movie-title > h3{
+  color: #ffffff;
+  font-weight: 500;
+}
+.Trending{
+  color: #ffffff;
+  background-color: #F03A17;
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+.Popular{
+  color: #FFDE09;
+  border: 1px solid #FFDE09;
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+.Suggestion, .Recommendation{
+  color: #F03A17;
+  border: 1px solid #F03A17;
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+.movie-caption > p{
+  color: #828283;
+  line-height: 7px;
+}
+.movie-category{
+  color: #828283;
+  font-size: 12px;
+}
+.good{
+  color: #09FF19;
+}
+.decent{
+  color: #FFDE09;
+}
+.bad{
+  color: #FB3A3A;
+}
+.rec.rec-arrow {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-top: -8%;
+}
+.rec.rec-arrow:hover {
+  background-color: transparent;
+}
+.rec-carousel-item:focus{
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+.show-more-movies > a > img{
+  max-width: 100%;
+  border-radius: 5px;
+}

@@ -1,0 +1,41 @@
+/* SearchMovie */
+.choose-text{
+    color: #828283;
+    margin-top: 5%;
+  }
+  form > div{
+    display: flex;
+  }
+  .search-movie-wrapper{
+    margin-top: 50px;
+  }
+  .search{
+    border:none;
+    width: 95%;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #28292A;
+    color: #fff;
+    font-weight: 500;
+  }
+  .search::placeholder{
+    color: #828283;
+    position: relative;
+    font-weight: bold;
+    left: 30px;
+  }
+  .search-btn{
+    cursor: pointer;
+    position: relative;
+    margin-left: 10px;
+    width: 50px;
+    background-color: #F03A17;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+  }
+  .search-icon{
+    position: absolute;
+    transform: translate(60%, 60%);
+  }
+  

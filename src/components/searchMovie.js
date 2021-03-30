@@ -1,4 +1,5 @@
 import React, { useState }from 'react'
+import '../css/search.css'
 import FeatherIcon from 'feather-icons-react'
 import movie_genres from '../api/movie_genres.json'
 import { Link } from 'react-router-dom'

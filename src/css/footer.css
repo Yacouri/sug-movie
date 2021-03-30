@@ -1,0 +1,33 @@
+/* Footer */
+.footer-wrapper{
+    width: 100%;
+    background-color: #F03A17;
+  }
+  .footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:50px
+  }
+  .footer-logo{
+    font-weight: 600;
+    font-size: 40px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .footer-link{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .f-link{
+    margin-top: 50px;
+  }
+  .copyright {
+    margin-top: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+  }
+  

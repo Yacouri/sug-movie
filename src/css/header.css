@@ -1,0 +1,16 @@
+  /* Header */
+  .header{
+    margin-top: 7%;
+  }
+  .header-title{
+    text-align: center;
+  }
+  .title-one, .title-two{
+    line-height: 20px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  .movies-number{
+    color: #F03A17;
+  }
+  

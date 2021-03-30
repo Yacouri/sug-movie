@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import '../../css/movie_details.css'
 import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
 import { fetchMovieById, checkMovieImage } from '../../actions/movie'

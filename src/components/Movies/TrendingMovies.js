@@ -1,5 +1,6 @@
 import React from 'react'
 import MoviesCarousel from './MoviesCarousel'
+import '../../css/trend_movies.css'
 
 const TrendingMovies = ({ movies_data })=> {
     return (

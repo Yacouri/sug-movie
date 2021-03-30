@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../css/casters.css'
 import { Link } from 'react-router-dom'
 import { checkActorImage } from '../../actions/movie'
 

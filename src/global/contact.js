@@ -1,6 +1,6 @@
 import React from 'react'
+import '../css/contact.css'
 import FeatherIcon from 'feather-icons-react'
-
 
 const Contact = () => {
     return (
