@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+/*import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMoviesSuggestion } from '../actions/movie';
 import MoviesWithPagination from '../components/Movies/MoviesWithPagination';
@@ -10,7 +10,7 @@ const MovieSuggestion = ()=> {
     const { suggested_genres } = useSelector(state =>state.movie)
     useEffect(() =>{
         dispatch(fetchMoviesSuggestion())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
@@ -26,3 +26,4 @@ const MovieSuggestion = ()=> {
 }
 
 export default MovieSuggestion
+*/

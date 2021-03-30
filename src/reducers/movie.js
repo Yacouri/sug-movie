@@ -2,9 +2,8 @@ const initialState ={
     movies: [],
     download_links : [],
     cast: [],
+    genres: [],
     movie_details: {},
-    movies_url: null,
-    popular_movies: [],
     suggestions: [],
     suggested_genres: null,
     actors : [],
@@ -29,31 +28,15 @@ const movieReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 movie_details: action.payload,
-                loading: false
-            }
-        case 'GET_MOVIES_VIDEO':
-            return {
-                ...state,
-                movies_url: action.payload,
-                loading: false
-            }
-        case 'GET_POPULAR_ACTORS':
-            return {
-                ...state,
-                actors: action.payload,
-                loading: false
-            }
-        case 'GET_POPULAR_MOVIES':
-            return {
-                ...state,
-                popular_movies: action.payload,
+                cast: action.cast,
+                genres: action.genres,
+                download_links: action.download_links,
                 loading: false
             }
         case 'GET_MOVIE_SUGGESTION':
             return{
                 ...state,
                 suggestions: action.payload,
-                total_results: action.total_results,
                 suggested_genres: action.suggested_genres, 
                 loading: false
             }

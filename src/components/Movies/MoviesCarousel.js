@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {getMoviesGenre, getMovieSlug, getVoteColor} from '../../actions/movie'
+import {getVoteColor} from '../../actions/movie'
 import Item from '../styledComponents/item'
 import Carousel from "react-elastic-carousel";
 import ShowMoreMoviesImage from '../../images/show_more_movies.png'

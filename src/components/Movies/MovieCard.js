@@ -13,7 +13,7 @@ const MovieCard =({ id, section, genre, slug, poster, title, release_date, vote_
         <div className="movie-card-wrapper">
             <div className="movie-card">
                 <div className="movie-img">
-                    <Link to={`/movie/${id}/${encodeURIComponent(slug)}`} target="_top">
+                    <Link to={`/movie/${id}/${encodeURIComponent(slug)}`} >
                         <img src={poster} alt="movie"/>
                     </Link>
                 </div>

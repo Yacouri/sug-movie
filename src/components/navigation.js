@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Contact from '../global/contact';
 import Home from '../global/home';
 import MovieDetails from './Movies/MovieDetails';
-import MovieSuggestion from '../global/movieSuggestion'
 import TopMovies from '../global/topMovies'
 import SearchMovieResults from './Movies/SearchMovieResults';
 
@@ -43,13 +42,13 @@ function Navbar() {
                         <TopMovies />
                     </Route>
                     <Route path="/movie-suggestion" exact>
-                        <MovieSuggestion />
+                        <Home />
                     </Route>
                     <Route path="/contact-us" exact>
                         <Contact />
                     </Route>
-                    <Route path="/movie/:id/:slug" children={<MovieDetails />} />
-                    <Route path="/movie/search/:genre_id" children={<SearchMovieResults />} />
+                    <Route path="/movie/search/:genre" children={<SearchMovieResults />} />
+                    <Route path="/movie/:id/:slug" children={<MovieDetails />}/>
                 </Switch>
             </div>
         </Router>

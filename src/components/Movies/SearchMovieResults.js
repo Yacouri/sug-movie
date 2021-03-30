@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchClickedPageResults, fetchSearchResults, getMoviesGenre, getMovieSlug, getVoteColor } from '../../actions/movie';
+import { fetchClickedPageResults, fetchSearchResults, getVoteColor} from '../../actions/movie';
 import FeatherIcon from 'feather-icons-react'
 import Pagination from 'react-js-pagination';
 import MovieCard from './MovieCard'
@@ -9,28 +9,26 @@ import MovieCard from './MovieCard'
 const SearchMovieResults = ()=> {
     const [activePage, setActivePage] = useState(1);
     const dispatch = useDispatch();
-    const { genre_id } = useParams()
+    const { genre } = useParams()
     const { suggestions } = useSelector(state =>state.movie)
     const { total_results } = useSelector(state =>state.movie)
 
     useEffect(() =>{
-        dispatch(fetchSearchResults(genre_id))
-    }, [])
+        dispatch(fetchSearchResults(genre))
+    }, [genre, dispatch])
 
-    const renderMovies = suggestions.map(movie =>{
+    const renderMovies = suggestions.map((movie, index)=>{
         return (
-            <div className="suggested-movie" key={movie.id}>
+            <div key={index}>
                 <MovieCard 
-                    genre_id={movie.genre_ids[0]}
-                    genre={getMoviesGenre(movie.genre_ids[0])}
                     id={movie.id}
-                    slug={getMovieSlug(movie.title)}
-                    poster={movie.poster_path}
+                    genre={movie.genres}
+                    slug={movie.slug}
+                    poster={movie.medium_cover_image}
                     title={movie.title}
                     release_date={movie.release_date}
-                    vote_color={getVoteColor(movie.vote_average)}
-                    vote_average={movie.vote_average}
-                    section="Suggestion"
+                    vote_color={getVoteColor(movie.rating)}
+                    vote_average={movie.rating}
                 />
             </div>
         )
@@ -62,7 +60,7 @@ const SearchMovieResults = ()=> {
                     onChange={(page_number)=>{
                         setActivePage(page_number)
                         console.log(page_number)
-                        dispatch(fetchClickedPageResults(page_number, genre_id))
+                        dispatch(fetchClickedPageResults(page_number, genre))
                     }}
                 />
             </div>

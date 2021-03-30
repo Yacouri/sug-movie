@@ -3,39 +3,42 @@ import SearchMovie from '../searchMovie'
 import { useParams } from 'react-router'
 import { fetchMovieById, checkMovieImage } from '../../actions/movie'
 import { useDispatch, useSelector } from 'react-redux'
-//import MovieGenres from './MovieGenres'
-//import MovieCredits from './MovieCredits'
-//import CurrentGenreRecommendation from './CurrentGenreRecommendation'
+import MovieCredits from './MovieCredits'
+import CurrentGenreRecommendation from './CurrentGenreRecommendation'
 
 const MovieDetails = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
-    const { movie_details } = useSelector(state => state.movie)
-    //const { actors } = useSelector(state => state.movie)
-    //const movies_url = useSelector(state => state.movie.movies_url)
-    const renderTrailer = (
-        movie_details.movies_url !== null ? 
-        <iframe width="100%" height="315" 
-            src={'movies_url'}
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-            allowFullScreen>
-        </iframe>
-        :
-        <p className="trailer-error-text">Sorry, <span className="m-name">{movie_details.title}'s</span> trailer not found. </p>
-    )
-    const renderGenres = movie_details.genres.map((genre, index)=>{
+    const { movie_details, cast, genres, download_links } = useSelector(state => state.movie)
+
+    const renderGenres = genres.map((genre, index)=>{
         return (
-            <div key={index}>\
-                <p>{genre}</p>
+            <div key={index}>
+                <span>{genre}</span>
             </div>
         )
     })
+    const renderDownloadButtons = download_links.map((torrent, index) =>{
+        return (
+            <tr key={index}>
+                <td>{torrent.quality}</td>
+                <td>{torrent.type}</td>
+                <td>{torrent.size}</td>
+                <td>
+                    <a className="watch-movie" href={torrent.url} download>
+                        Download {torrent.size}
+                    </a>
+                </td>
+            </tr>
+        
+        )
+    })
+    const renderCasters= cast === undefined ? 
+    <p className="error-casters">Sorry <span>{movie_details.title}</span> casters not found</p>
+    :
+    <MovieCredits casters={cast} /> 
     useEffect(() => {
         dispatch(fetchMovieById(id))
-        
-        //dispatch(fetchMoviesVideo(id))
-        //dispatch(fetchMovieCredits(id))
     }, [id, dispatch]);
 
     return (
@@ -49,7 +52,6 @@ const MovieDetails = () => {
                     <div className="movie-caption-wrapper">
                         <div className="title">
                             <h3>{movie_details.title}</h3>
-                            <span>X</span>
                         </div>
                         <div className="selected-movie-overview">
                             <p className="movie-detail">Overview</p>
@@ -58,11 +60,11 @@ const MovieDetails = () => {
                             </p>
                         </div>
                         <div className="selected-movie-overview">
-                                <p className="movie-detail">Genre</p>
-                                    {
-                                        renderGenres
-                                    }
+                            <p className="movie-detail">Genres</p>
+                            <div className="genres-wrapper">
+                                { renderGenres }
                             </div>
+                        </div>
                         <div className="selected-movie-overview">
                             <p className="movie-detail">Released on</p>
                             <p className="movie-detail-value">
@@ -89,23 +91,46 @@ const MovieDetails = () => {
                                 </p>
                             </div>
                         </div>
-                    <button className="watch-movie">Download torrent</button>
+                        <div className="download-links">
+                            <p>Downloads</p>
+                            <table id="downloads">
+                                <thead>
+                                    <tr>
+                                        <td>Quality</td>
+                                        <td>Type</td>
+                                        <td>Size</td>
+                                        <td>Download</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { renderDownloadButtons }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div className="movie-credits">
+                <div className="movie-credits mt-10">
                     <h1>Actors 🎭</h1>
-                    {/*<MovieCredits casters={actors} /> */}
+                    { renderCasters }
                 </div>
-                <div className="trailer-wrapper">
+                <div className="trailer-wrapper mt-10">
                     <h1>Trailer 🎬</h1>
-                    {
-                        //renderTrailer
-                    }
+                    <p className="trailer-err">
+                        In case the trailer video does not work, try this one 
+                        <a href={`https://www.youtube.com/results?search_query=${movie_details.title+' movie trailer'}`}> Click me 🌞</a>
+                    </p>
+                    <iframe width="100%" height="315"
+                    src={`https://www.youtube.com/embed/${movie_details.yt_trailer_code}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen>
+                    </iframe>
                 </div>
                     
-                <div className="current-genre-recommendation-wrapper">
-                    <h1>Recommendation for X movies 🍿</h1>
-                    {/*<CurrentGenreRecommendation current_genre={ genre_id }/>*/}
+                <div className="current-genre-recommendation-wrapper mt-10">
+                    <h1>Recommendation for <span>{ genres[0] }</span> movies 🍿</h1>
+                    <CurrentGenreRecommendation current_genre={ id }/>
                 </div>
             </div>
         </div>
