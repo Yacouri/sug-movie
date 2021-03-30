@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchClickedPageResults, fetchSearchResults, getVoteColor} from '../../actions/movie';
+import { fetchClickedPageResults, fetchFourKMovies, getVoteColor } from '../actions/movie';
 import FeatherIcon from 'feather-icons-react'
 import Pagination from 'react-js-pagination';
-import MovieCard from './MovieCard'
+import MovieCard from '../components/Movies/MovieCard'
 
-const SearchMovieResults = ()=> {
+const FourkMovies = () =>{
     const [activePage, setActivePage] = useState(1);
     const dispatch = useDispatch();
-    const { genre } = useParams()
-    const { suggestions, total_results } = useSelector(state =>state.movie)
+    const { suggestions, total_results, loading } = useSelector(state =>state.movie)
+    
+    useEffect(()=>{
+        dispatch(fetchFourKMovies())
+    }, [dispatch])
 
-    useEffect(() =>{
-        dispatch(fetchSearchResults(genre))
-    }, [genre, dispatch])
-
-    const renderMovies = suggestions.map((movie, index)=>{
+    const renderFourKMovies = suggestions.map((movie, index)=>{
         return (
             <div key={index}>
                 <MovieCard 
@@ -35,10 +33,12 @@ const SearchMovieResults = ()=> {
     return (
         <div>
             <div className="suggestion-wrapper">
-                <h2>Search Results 🔍</h2>
+                <h2>4K Movies 📺</h2>
             </div>
             <div className="movie-suggestions">
-                {renderMovies}
+                {
+                    loading ? <p className="loading">🔃 Loading ...</p> : renderFourKMovies
+                }
             </div>
             <div className="pagination-wrapper">
                 <Pagination
@@ -58,7 +58,7 @@ const SearchMovieResults = ()=> {
                     pageRangeDisplayed={5}
                     onChange={(page_number)=>{
                         setActivePage(page_number)
-                        dispatch(fetchClickedPageResults(page_number, genre))
+                        dispatch(fetchClickedPageResults(page_number, '', '2160p'))
                     }}
                 />
             </div>
@@ -66,4 +66,4 @@ const SearchMovieResults = ()=> {
     )
 }
 
-export default SearchMovieResults
+export default FourkMovies

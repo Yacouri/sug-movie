@@ -429,6 +429,10 @@ form > div{
 }
 
 /* Movie suggestion */
+.loading{
+  color: #F0F8FF;
+  font-weight: 500;
+}
 .movie-suggestions{
   display: flex;
   justify-content: space-between;

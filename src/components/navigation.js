@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Contact from '../global/contact';
 import Home from '../global/home';
 import MovieDetails from './Movies/MovieDetails';
-import TopMovies from '../global/topMovies'
 import SearchMovieResults from './Movies/SearchMovieResults';
+import MovieSuggestion from '../global/movieSuggestion'
+import FourkMovies from '../global/FourkMovies';
 
 function Navbar() {
     return (
@@ -20,10 +21,10 @@ function Navbar() {
                                 <Link to="/home" className="nav-link">Home.</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/top-movies" className="nav-link">Trending movies.</Link>
+                                <Link to="/4k" className="nav-link">4K movies.</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/movie-suggestion" className="nav-link">Movie suggestion.</Link>
+                                <Link to="/movie-suggestion" className="nav-link">Suggestions.</Link>
                             </li>
                         </ul>
                     </div>
@@ -38,11 +39,11 @@ function Navbar() {
                     <Route path="/home" exact>
                         <Home />
                     </Route>
-                    <Route path="/top-movies" exact>
-                        <TopMovies />
+                    <Route path="/4k" exact>
+                        <FourkMovies />
                     </Route>
                     <Route path="/movie-suggestion" exact>
-                        <Home />
+                        <MovieSuggestion />
                     </Route>
                     <Route path="/contact-us" exact>
                         <Contact />

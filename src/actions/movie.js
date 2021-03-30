@@ -13,7 +13,6 @@ export const fetchMovies = () =>{
     return (dispatch)=>{
         dispatch(fetchGetRequest())
         const complete_url = `https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${getRandomGenre()}&quality=All&minimum_rating=8`
-        //axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
         axios.get(complete_url)
         .then(res => {
             const movies = res.data.data.movies
@@ -57,25 +56,26 @@ export const fetchPopularMovies = () =>{
 export const fetchMoviesSuggestion = ()=>{
     return (dispatch) =>{
         const genre = getRandomGenre()
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_genres=${genre}&page=1`
+        const url = `https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${genre}&quality=All&minimum_rating=All&page=1`
         dispatch(fetchGetRequest())
         axios.get(url)
         .then(res => {
-            return dispatch(getSuggestionMovie(res.data.results,  res.data.total_results, genre))
+            const suggestions = res.data.data.movies
+            const total_results = res.data.data.movie_count
+            return dispatch(getSuggestionMovie(suggestions, total_results, genre))
         })
         .catch(error =>{
             console.warn(error)
         })
     }
 }
-export const fetchClickedPageResults =(pageNumber, currentGenre)=>{
+export const fetchClickedPageResults =(pageNumber, currentGenre, quality)=>{
     return (dispatch) =>{
-        const url = `https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${currentGenre}&quality=All&minimum_rating=All&page=${pageNumber}`
+        const url = `https://yts.mx/api/v2/list_movies.json?limit=20&genre=${currentGenre}&quality=${quality}&page=${pageNumber}`
         dispatch(fetchGetRequest())
         axios.get(url)
         .then(res => {
             const search_results = res.data.data.movies
-            console.log(search_results)
             return dispatch(getClickedPageResults(search_results))
         })
         .catch(error =>{
@@ -113,9 +113,8 @@ export const fetchCurrentGenreRecommendation = (currentGenre) =>{
 export const fetchSearchResults = (currentGenre) =>{
     return (dispatch) =>{
         dispatch(fetchGetRequest())
-        axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${currentGenre}&quality=All&minimum_rating=Allpage=1`)
+        axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=20&genre=${currentGenre}&quality=All&minimum_rating=All&page=1`)
         .then(res =>{
-            console.log(res.data)
             const search_result = res.data.data.movies
             const total_results = res.data.data.movie_count
             return dispatch(getSearchResults(search_result, total_results))
@@ -125,7 +124,20 @@ export const fetchSearchResults = (currentGenre) =>{
         })
     }
 }
-
+export const fetchFourKMovies = () =>{
+    return (dispatch) =>{
+        dispatch(fetchGetRequest())
+        axios.get(`https://yts.mx/api/v2/list_movies.json?limit=20&quality=2160p&sort_by=latest&page=1`)
+        .then(res =>{
+            const movies = res.data.data.movies
+            const total_results = res.data.data.movie_count
+            return dispatch(getFourKMovies(movies, total_results))
+        })
+        .catch(error =>{
+            console.warn(error)
+        })
+    }
+}
 
 // FETCHING ACTIONS
 export const fetchGetRequest = () =>{
@@ -154,11 +166,12 @@ export const getPopularMovies = (popular_movies) =>{
         payload: popular_movies
     }
 }
-export const getSuggestionMovie = (suggestions, suggested_genres) =>{
+export const getSuggestionMovie = (suggestions, total_results, selected_genre) =>{
     return{
         type: 'GET_MOVIE_SUGGESTION',
         payload: suggestions,
-        suggested_genres: suggested_genres
+        total_results: total_results,
+        selected_genre: selected_genre
     }
 }
 export const getClickedPageResults = (pageResults) =>{
@@ -183,6 +196,13 @@ export const getSearchResults = (search_results, total_results) =>{
     return{
         type: 'GET_SEARCH_RESULTS',
         payload: search_results,
+        total_results: total_results
+    }
+}
+export const getFourKMovies = (movies, total_results) =>{
+    return{
+        type: 'GET_FOUR_K_MOVIES',
+        payload: movies,
         total_results: total_results
     }
 }

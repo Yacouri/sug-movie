@@ -3,6 +3,8 @@ const initialState ={
     download_links : [],
     cast: [],
     genres: [],
+    four_k: [],
+    selected_genre: null,
     movie_details: {},
     suggestions: [],
     suggested_genres: null,
@@ -37,7 +39,8 @@ const movieReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 suggestions: action.payload,
-                suggested_genres: action.suggested_genres, 
+                total_results: action.total_results,
+                selected_genre: action.selected_genre,
                 loading: false
             }
         case 'GET_CLICKED_PAGE_RESULTS':
@@ -59,6 +62,13 @@ const movieReducer = (state = initialState, action) =>{
                 loading: false
             }
         case 'GET_SEARCH_RESULTS':
+            return{
+                ...state,
+                suggestions: action.payload,
+                total_results: action.total_results,
+                loading: false
+            }
+        case 'GET_FOUR_K_MOVIES':
             return{
                 ...state,
                 suggestions: action.payload,
