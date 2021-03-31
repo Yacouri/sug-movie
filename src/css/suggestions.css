@@ -38,27 +38,98 @@
   .suggestion-wrapper > h2{
     color: #ffffff;
   }
-  .suggestion-wrapper > button > svg{
-    margin-left: 20px;
-  }
-  .suggestion-wrapper > button{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 30px;
-    background-color: #F03A17;
-    color: #ffffff;
-    font-size:15px;
-    font-weight:100;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    transition: 0.3s;
-  }
-  .suggestion-wrapper > button:hover{
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #fff;
-  }
   
+  
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .movie-suggestions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .movie-suggestions > div{
+    flex: 0 48%;
+  }
+  .pagination{
+    padding: 0px;
+  }
+  .pagination-wrapper{
+    margin: 60px 0% 100px 0%;
+    display: flex;
+    justify-content: center;
+  }
+  .li-pagination{
+    display:  inline-block;
+    margin:5px;
+  }
+  .active-a{
+    background-color: #F03A17;
+    color: #F03A17;
+  }
+  .a-pagination{
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .movie-suggestions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .movie-suggestions > div{
+    flex: 0 48%;
+  }
+  .pagination{
+    padding: 0px;
+  }
+  .pagination-wrapper{
+    margin: 60px 0% 100px 0%;
+    display: flex;
+    justify-content: center;
+  }
+  .li-pagination{
+    display:  inline-block;
+    margin:5px;
+  }
+  .active-a{
+    background-color: #F03A17;
+    color: #F03A17;
+  }
+  .a-pagination{
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .movie-suggestions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .movie-suggestions > div{
+    flex: 0 33%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .movie-suggestions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .movie-suggestions > div{
+    flex: 0 33%;
+  }
+}
+
+@media only screen and (min-width: 1399px) {
+  
+}

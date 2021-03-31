@@ -7,6 +7,7 @@ import MovieDetails from './Movies/MovieDetails';
 import SearchMovieResults from './Movies/SearchMovieResults';
 import MovieSuggestion from '../global/movieSuggestion'
 import FourkMovies from '../global/FourkMovies';
+import MobileNavigation from './mobileNavigation';
 
 function Navbar() {
     return (
@@ -53,6 +54,8 @@ function Navbar() {
                     <Route path="/movie/:id/:slug" children={<MovieDetails />}/>
                 </Switch>
             </div>
+        <MobileNavigation />
+
         </Router>
         
     )

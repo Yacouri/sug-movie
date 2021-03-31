@@ -14,3 +14,72 @@
     color: #F03A17;
   }
   
+
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .header-title{
+    text-align: left;
+  }
+  .title-one, .title-two{
+    line-height: 30px;
+    font-weight: 600;
+    font-size: 25px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .header-title{
+    text-align: left;
+  }
+  .title-one, .title-two{
+    line-height: 30px;
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .header{
+    margin-top: 10%;
+  }
+  .header-title{
+    text-align: center;
+  }
+  .title-one, .title-two{
+    line-height: 30px;
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .header{
+    margin-top: 10%;
+  }
+  .header-title{
+    text-align: center;
+  }
+  .title-one, .title-two{
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 1399px) {
+  .header{
+    margin-top: 10%;
+  }
+  .header-title{
+    text-align: center;
+  }
+  .title-one, .title-two{
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 40px;
+  }
+}

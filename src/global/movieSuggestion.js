@@ -57,7 +57,7 @@ const MovieSuggestion = ()=> {
                     activePage={ activePage }
                     itemsCountPerPage={20}
                     totalItemsCount={ total_results }
-                    pageRangeDisplayed={5}
+                    pageRangeDisplayed={3}
                     onChange={(page_number)=>{
                         setActivePage(page_number)
                         dispatch(fetchClickedPageResults(page_number, selected_genre))
