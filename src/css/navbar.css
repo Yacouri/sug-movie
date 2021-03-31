@@ -87,11 +87,14 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .nav-items{
+  .mobile-navigation{
     display: none;
   }
+  .nav-items{
+    display: block;
+  }
   .contact-btn-wrapper{
-    display: none;
+    display: block;
   }
   .mobile-navigation{
     position: fixed;

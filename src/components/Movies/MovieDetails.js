@@ -21,17 +21,12 @@ const MovieDetails = () => {
     })
     const renderDownloadButtons = download_links.map((torrent, index) =>{
         return (
-            <tr key={index}>
-                <td>{torrent.quality}</td>
-                <td>{torrent.type}</td>
-                <td>{torrent.size}</td>
-                <td>
-                    <a className="watch-movie" href={torrent.url} download>
-                        Download {torrent.size}
-                    </a>
-                </td>
-            </tr>
-        
+            <div key={index} className="download-wrapper">
+                <p>Type: {torrent.type}</p>
+                <p>Quality: {torrent.quality}</p>
+                <p>Size: {torrent.size}</p>
+                <a className="download-movie" href={torrent.url} download>Download</a>
+            </div>
         )
     })
     const renderCasters= cast === undefined ? 
@@ -47,7 +42,7 @@ const MovieDetails = () => {
             <SearchMovie />
             <div className="movie-details-wrapper">
                 <div className="movie-details">
-                <div className="selected-movie-img">
+                    <div className="selected-movie-img">
                         <img src={checkMovieImage(movie_details.large_cover_image)} alt="movie img"/>
                     </div>
                     <div className="movie-caption-wrapper">
@@ -92,21 +87,9 @@ const MovieDetails = () => {
                                 </p>
                             </div>
                         </div>
+                        <p className="download-text">Downloads</p>
                         <div className="download-links">
-                            <p>Downloads</p>
-                            <table id="downloads">
-                                <thead>
-                                    <tr>
-                                        <td>Quality</td>
-                                        <td>Type</td>
-                                        <td>Size</td>
-                                        <td>Download</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { renderDownloadButtons }
-                                </tbody>
-                            </table>
+                            { renderDownloadButtons }
                         </div>
                     </div>
                 </div>

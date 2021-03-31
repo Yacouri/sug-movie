@@ -47,21 +47,144 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .popular-actors-wrapper{
+    display: block;
+  }
+  .popular-actor{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top:20px;
+  }
+  .character{
+    margin-left: 20px;
+    line-height: 10px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .popular-actors-wrapper{
+    display: block;
+  }
+  .popular-actor{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top:20px;
+  }
+  .character{
+    margin-left: 20px;
+    line-height: 10px;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  .popular-actors-wrapper{
+    display: block;
+  }
+  .popular-actor{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top:20px;
+  }
+  .character{
+    margin-left: 20px;
+    line-height: 10px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  
+  .actor-img > a > img{
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  .actor-name > h3{
+    color: #ffffff;
+    text-align: center;
+    font-weight: 500;
+  }
+  .popular-actors-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+  .popular-actor{
+    flex: 0 20%;
+    border-radius:5px;
+    padding: 10px;
+    border: 1px solid #fff;
+  }
+  .character{
+    line-height: 15px;
+  }
+  .character-name{
+    color: #fff; 
+  }
+  .character > .actor-name{
+    color: #fff;
+  }
+  .character > .character-name{
+    font-weight: 100;
+    color: #fff;
+  }
+  .character > p > span{
+    font-weight: 500;
+    color: #F03A17;
+  }
+  .error-casters{
+    color: #fff;
+    font-weight: 500;
+  }
+  .error-casters > span{
+    color: #F03A17;
+  }
 }
 
 @media only screen and (min-width: 1399px) {
-  
+  .actor-img > a > img{
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  .actor-name > h3{
+    color: #ffffff;
+    text-align: center;
+    font-weight: 500;
+  }
+  .popular-actors-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+  .popular-actor{
+    flex: 0 20%;
+    border-radius:5px;
+    padding: 10px;
+    border: 1px solid #fff;
+  }
+  .character{
+    line-height: 10px;
+  }
+  .character-name{
+    color: #fff;  
+  }
+  .character > .actor-name{
+    color: #fff;
+  }
+  .character > .character-name{
+    font-weight: 100;
+    color: #fff;
+  }
+  .character > p > span{
+    font-weight: 500;
+    color: #F03A17;
+  }
+  .error-casters{
+    color: #fff;
+    font-weight: 500;
+  }
+  .error-casters > span{
+    color: #F03A17;
+  }
 }
