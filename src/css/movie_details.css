@@ -9,9 +9,12 @@
     display: flex;
     justify-content: space-arround;
   }
+  .movie-details > div{
+    flex: 0 50%;
+  }
   .selected-movie-img > img{
     border-radius: 10px;
-    max-width: 100%;
+    width: 100%;
   }
   .movie-caption-wrapper{
     margin-top: -40px;
@@ -372,5 +375,113 @@
 }
 
 @media only screen and (min-width: 1399px) {
-  
+  .mt-10{
+    margin-top: 10%;
+  }
+  .movie-details-wrapper{
+    margin: 100px 0px;
+  }
+  .movie-details{
+    display: flex;
+    justify-content: space-arround;
+  }
+  .movie-details > div{
+    flex: 0 50%;
+  }
+  .selected-movie-img > img{
+    border-radius: 10px;
+    width: 100%;
+  }
+  .movie-caption-wrapper{
+    margin-top: -40px;
+    margin-left: 50px;
+  }
+  .title > h3{
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 40px;
+  }
+  .selected-movie-overview > .movie-detail{
+    color: #828283;
+  }
+  .selected-movie-overview > .movie-detail-value{
+    color: #fff;
+  }
+  .movie-overview-flex{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .movie-credits > h1{
+    color: #fff;
+  }
+  .genres-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .genres-wrapper > div > span{
+    margin-right: 10px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  .download-text{
+    color: #828283;
+  }
+  .download-links{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+  .download-wrapper{
+    color: #fff;
+    background-color: rgb(130, 130, 131, 0.2);
+    padding: 10px 0px 30px 15px;
+    margin: 5px 10px 0px 0px;
+    border-radius:5px;
+    font-size: 12px;
+  }
+  .download-movie{
+    margin-top: 30px;
+    background-color: #F03A17;
+    color: #ffffff;
+    text-decoration: none;
+    outline: none;
+    border:none;
+    border-radius:10px;
+    width: 50%;
+    padding: 10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .download-movie:hover{
+    color: #F03A17;
+    border: 1px solid #F03A17;
+    background-color: transparent;
+  }
+  .trailer-err > a{
+    color: #F03A17;
+    text-decoration: none;
+  }
+  .trailer-wrapper{
+    color: #fff;
+    margin-top: 5%;
+  }
+  .m-name{
+    color: #F03A17;
+  }
+  .current-genre-recommendation-wrapper{
+    margin-top: 5%;
+    color: #fff;
+    font-size: 12px;
+  }
+  .current-genre-recommendation-wrapper > h1 >span{
+    color: #F03A17;
+  }
+  .similar-movies{
+    display: flex;
+    justify-content: space-between;
+  }
 }

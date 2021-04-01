@@ -15,7 +15,7 @@ function Navbar() {
             <div className="nav-wrapper">
                 <nav className="navbar">
                     <div className="logo-wrapper">
-                        <Link path="/" exact>
+                        <Link to="/home">
                             <h2 className="logo">Sugmovie.</h2>
                         </Link>
                     </div>

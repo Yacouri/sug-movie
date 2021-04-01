@@ -126,10 +126,48 @@
     flex-wrap: wrap;
   }
   .movie-suggestions > div{
-    flex: 0 33%;
+    flex: 0 18%;
   }
 }
 
 @media only screen and (min-width: 1399px) {
-  
+  .loading{
+    color: #F0F8FF;
+    font-weight: 500;
+  }
+  .movie-suggestions{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .movie-suggestions > div{
+    flex: 0 18%;
+  }
+  .pagination-wrapper{
+    margin-top:5%;
+    display: flex;
+    justify-content: center;
+  }
+  .li-pagination{
+    display:  inline-block;
+    margin: 20px;
+  }
+  .active-a{
+    background-color: #F03A17;
+    color: #F03A17;
+  }
+  .a-pagination{
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .suggestion-wrapper{
+    margin: 10% 0 3% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .suggestion-wrapper > h2{
+    color: #ffffff;
+  }
 }
