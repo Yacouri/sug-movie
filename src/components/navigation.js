@@ -15,7 +15,9 @@ function Navbar() {
             <div className="nav-wrapper">
                 <nav className="navbar">
                     <div className="logo-wrapper">
-                        <h2 className="logo">Sugmovie.</h2>
+                        <Link path="/" exact>
+                            <h2 className="logo">Sugmovie.</h2>
+                        </Link>
                     </div>
                     <div className="nav-items">
                         <ul className="ul-items">
