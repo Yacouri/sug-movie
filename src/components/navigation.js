@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../css/navbar.css'
 import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
 import Contact from '../global/contact';
