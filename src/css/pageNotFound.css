@@ -1,0 +1,32 @@
+.page-error{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.page-error > img{
+    max-width: 100%;
+}
+.page-error > span{
+    color: #F03A17;
+    font-size: 70px;
+    font-weight: 600;
+}
+.page-error > span > sup{
+    color: #fff;
+    font-size: 20px;
+}
+.page-error > p{
+    color: #fff;
+}
+.page-error > a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #F03A17;
+}
+.page-error > a > svg{
+    margin-right: 10px;
+}
