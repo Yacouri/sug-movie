@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/navbar.css'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
 import Contact from '../global/contact';
 import Home from '../global/home';
 import MovieDetails from './Movies/MovieDetails';
@@ -8,8 +8,14 @@ import SearchMovieResults from './Movies/SearchMovieResults';
 import MovieSuggestion from '../global/movieSuggestion'
 import FourkMovies from '../global/FourkMovies';
 import MobileNavigation from './mobileNavigation';
+import ReactGA from 'react-ga'
+
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_CODE)
 
 function Navbar() {
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    })
     return (
         <Router>
             <div className="nav-wrapper">
@@ -63,4 +69,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default withRouter(Navbar)
